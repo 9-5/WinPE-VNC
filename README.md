@@ -33,8 +33,8 @@ No liability is held by me in the event of: The VNC server is accessed due to it
 ## Setup Instructions
 Video Tutorial coming soon...
 
-1. Follow [Microsoft's guide on building WinPE](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/download-winpe--windows-pe?view=windows-11). // This guide assumes that C:\WinPE\ is where the WinPE build files are stored.
-2. Once the environment is setup, mount the WinPE's boot.wim using the following command from Command Prompt as an Administrator: // This allows you to modify the WinPE filesystem.
+1. Follow [Microsoft's guide on building WinPE](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/download-winpe--windows-pe?view=windows-11). *// This guide assumes that C:\WinPE\ is where the WinPE build files are stored.*
+2. Once the environment is setup, mount the WinPE's boot.wim using the following command from Command Prompt as an Administrator: *// This allows you to modify the WinPE filesystem.*
 `DISM /Mount-Image /ImageFile:C:\WinPE\media\sources\boot.wim /MountDir:C:\WinPE\mount /Index:1`
 3. Install [TightVNC](https://www.tightvnc.com/download.php) and configure it as a system service. Set a password and change ports if desired (Default = 5900).
 4. Execute the following commands to export the registry keys and files associated with TightVNC.
@@ -44,7 +44,7 @@ reg export "HKEY_LOCAL_MACHINE\SOFTWARE\TightVNC" C:\VNC\vnc.reg
 copy C:\Program Files\TightVNC\*.* C:\VNC\
 ```
 6. Download either this repository or the pre-built executables and server.zip found in the releases section and move/extract them to C:\VNC\. Ensure there is a separate folder at C:\VNC\server. If downloading the pre-built executables, skip to step 10.
-7. Ensure [Node.JS](https://nodejs.org) and [Python](https://python.org) are installed and execute the following commands: // PyInstaller and PKG are used to build the standalone executables found in the releases section, since NodeJS and Python are too bulky to install into WinPE.
+7. Ensure [Node.JS](https://nodejs.org) and [Python](https://python.org) are installed and execute the following commands: *// PyInstaller and PKG are used to build the standalone executables found in the releases section, since NodeJS and Python are too bulky to install into WinPE.*
 ```batch
 pip install PyInstaller
 npm install --save @maximegris/node-websockify
@@ -56,9 +56,9 @@ npm install pkg
 python -m PyInstaller --onefile C:\VNC\server\winpe_httpserver.py
 pkg -t node*-win-x64 C:\VNC\winpe_vnc.js
 ```
-10. Copy C:\VNC to C:\WinPE\mount\Windows. // You can delete the original winpe_httpserver.py and winpe_vnc.js if so desired.
-11. Download [NirCMD](https://www.nirsoft.net/utils/nircmd.html) and place nircmd.exe in C:\WinPE\mount\Windows\System32. // This extends the functionality of Windows commands and will be used for the standalone executables.
-12. Navigate to C:\WinPE\mount\Windows\System32 and open startnet.cmd with Notepad then add and save the following lines: // The nircmd.exe exec hide command essentially runs the standalone executables as a background task to reduce distractions and prevent a Command Prompt from being locked up with either winpe_vnc or winpe_httpserver.
+10. Copy C:\VNC to C:\WinPE\mount\Windows. *// You can delete the original winpe_httpserver.py and winpe_vnc.js if so desired.*
+11. Download [NirCMD](https://www.nirsoft.net/utils/nircmd.html) and place nircmd.exe in C:\WinPE\mount\Windows\System32. *// This extends the functionality of Windows commands and will be used for the standalone executables.*
+12. Navigate to C:\WinPE\mount\Windows\System32 and open startnet.cmd with Notepad then add and save the following lines: *// The nircmd.exe exec hide command essentially runs the standalone executables as a background task to reduce distractions and prevent a Command Prompt from being locked up with either winpe_vnc or winpe_httpserver.*
 ```batch
 @echo off
 wpeinit >nul 2>&1
@@ -75,7 +75,7 @@ ipconfig
 ```
 12. Close all folders/files from C:\WinPE\mount and execute the following command from a Command Prompt as an Administrator to dismount and commit the changes.
 `DISM /Unmount-WIM /MountDir:C:\WinPE\mount /Commit`
-13. Once committed, the WinPE installation is ready to be installed onto a USB or HDD of your choice. Note, [creating a WinPE ISO](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-create-usb-bootable-drive?view=windows-11#create-a-winpe-iso-dvd-or-cd) file and using [Rufus](https://rufus.ie) is typically the most straight forward approach.
+13. Once committed, the WinPE installation is ready to be installed onto a USB or HDD of your choice. // [Creating a WinPE ISO](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-create-usb-bootable-drive?view=windows-11#create-a-winpe-iso-dvd-or-cd) file and using [Rufus](https://rufus.ie) is typically the most straight forward approach.
 
 ## Usage
 Once booting into WinPE, the startnet.cmd file will autorun and setup the VNC environment. Locate the IPv4 address found after running the ipconfig command.
