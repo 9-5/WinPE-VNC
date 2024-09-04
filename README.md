@@ -75,13 +75,16 @@ ipconfig
 ```
 12. Close all folders/files from C:\WinPE\mount and execute the following command from a Command Prompt as an Administrator to dismount and commit the changes.
 `DISM /Unmount-WIM /MountDir:C:\WinPE\mount /Commit`
-13. Once committed, the WinPE installation is ready to be installed onto a USB or HDD of your choice. // [Creating a WinPE ISO](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-create-usb-bootable-drive?view=windows-11#create-a-winpe-iso-dvd-or-cd) file and using [Rufus](https://rufus.ie) is typically the most straight forward approach.
+13. Once committed, the WinPE installation is ready to be installed onto a USB or HDD of your choice. // *[Creating a WinPE ISO](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/winpe-create-usb-bootable-drive?view=windows-11#create-a-winpe-iso-dvd-or-cd) file and using [Rufus](https://rufus.ie) is typically the most straight forward approach.*
 
 ## Usage
 Once booting into WinPE, the startnet.cmd file will autorun and setup the VNC environment. Locate the IPv4 address found after running the ipconfig command.
 Access the VNC client via any web browser from a computer on the same network using:
+
 http://[IP ADDRESS]:[PORT (DEFAULT=8000)/#host=[IP ADDRESS]&port=[PORT (DEFAULT=8113)]
+
 A real example would be:
+
 http://192.168.0.100:8000/#host=192.168.0.100&port=8113
 
 And press Connect under the WinPEVNC logo.
