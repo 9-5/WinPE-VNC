@@ -57,6 +57,8 @@ npm install pkg
 python -m PyInstaller --onefile C:\VNC\server\winpe_httpserver.py
 pkg -t node*-win-x64 C:\VNC\winpe_vnc.js
 ```
+- *By default, the winpe_httpserver serves the http server via port 8000, but a port can be specified using `\path\to\winpe_httpserver.exe [PORT NUMBER]`. For instance, `C:\VNC\winpe_httpserver.exe 80` will remove the need of specifying the port in the URL when accessing the VNC client. (Final URL would be something like `http://192.168.0.100/#host=192.168.0.100&port=192.168.0.100`*
+- 
 10. Copy C:\VNC to C:\WinPE\mount\Windows. *// You can delete the original winpe_httpserver.py and winpe_vnc.js if so desired.*
 11. Download [NirCMD](https://www.nirsoft.net/utils/nircmd.html) and place nircmd.exe in C:\WinPE\mount\Windows\System32. *// This extends the functionality of Windows commands and will be used for the standalone executables.*
 12. Navigate to C:\WinPE\mount\Windows\System32 and open startnet.cmd with Notepad then add and save the following lines: *// The nircmd.exe exec hide command essentially runs the standalone executables as a background task to reduce distractions and prevent a Command Prompt from being locked up with either winpe_vnc or winpe_httpserver.*
