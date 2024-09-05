@@ -72,7 +72,9 @@ cd X:\
 regedit /s X:\Windows\VNC\vnc.reg
 X:\Windows\VNC\tvnserver.exe -install -silent
 X:\Windows\VNC\tvnserver.exe -start
+cd X:\Windows\VNC
 X:\Windows\System32\nircmd.exe exec hide "X:\Windows\VNC\winpe_vnc.exe"
+cd X:\
 X:\Windows\System32\nircmd.exe exec hide "X:\Windows\VNC\server\winpe_httpserver.exe"
 ipconfig
 ```
