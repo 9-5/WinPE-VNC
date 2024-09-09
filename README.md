@@ -92,6 +92,8 @@ A real example would be:
 
 http://192.168.0.100:8000/#host=192.168.0.100&port=8113
 
+By default, the winpe_httpserver serves the http server via port 8000, but a port can be specified using `\path\to\winpe_httpserver.exe [PORT NUMBER]`. For instance, `C:\VNC\winpe_httpserver.exe 80` will remove the need of specifying the port in the URL when accessing the VNC client. (Final URL would be something like `http://192.168.0.100/#host=192.168.0.100&port=192.168.0.100`
+
 And press Connect under the WinPEVNC logo.
 
 ## FAQ
