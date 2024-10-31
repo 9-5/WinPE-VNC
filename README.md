@@ -1,3 +1,6 @@
+<p align="center">
+<img src="https://johnle.org/projects/img/winpe-vnc.png"/></p>
+
 # WinPE-VNC
 
 This project creates a Virtual Network Computing (VNC) server within a Windows Preinstallation Environment (WinPE) using NoVNC, Websockify (built from Node.js), and a Python-based HTTP server. It also includes a self-hosted VNC client accessible from anywhere within the local network. It started as a simple project to be able to VNC into systems within my work environment following a guide from [sjkingo/winpe_vnc](https://github.com/sjkingo/winpe_vnc), but I noticed there were some changes over the decade since the guide was written.
